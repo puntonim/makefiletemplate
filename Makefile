@@ -36,6 +36,7 @@ ifndef VIRTUAL_ENV
 endif
 
 requirements: _ensure_active_env
+	pip install -U "pip>=18.0" -q
 	pip install -U -r $(DEPS)
 
 

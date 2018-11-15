@@ -47,6 +47,7 @@ pyclean:
 	rm -rf *.egg-info build
 	rm -rf coverage.xml .coverage
 	rm -rf .pytest_cache
+	rm -rf __pycache__
 
 clean: pyclean
 	rm -rf venv

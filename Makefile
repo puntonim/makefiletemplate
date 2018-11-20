@@ -62,6 +62,8 @@ pipclean:
 ## Django local dev in the venv currently active.
 
 killmanage: _ensure_active_env
+	# Prefix `-` to continue also in case of return code <> 0.
+	#-pkill -f manage.py
 	pkill -f manage.py
 
 serve: _ensure_active_env

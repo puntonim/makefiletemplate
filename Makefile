@@ -95,13 +95,6 @@ pytests: _ensure_active_env
 pytest/%: _ensure_active_env
 	pytest tests -s -x -k $*
 
-lint: venv
-	$(TOX) -e lint
-	$(TOX) -e isort-check
-
-isort: venv
-	$(TOX) -e isort-fix
-
 setup.py: venv
 	$(PYTHON) setup_gen.py
 	$(PYTHON) setup.py check --restructuredtext
@@ -109,3 +102,14 @@ setup.py: venv
 publish: setup.py
 	$(PYTHON) setup.py sdist
 	$(TWINE) upload dist/*
+
+
+## Linters.
+# Requires TOX.
+
+lint: venv
+	$(TOX) -e lint
+	$(TOX) -e isort-check
+
+isort: venv
+	$(TOX) -e isort-fix

@@ -105,7 +105,7 @@ publish: setup.py
 
 
 ## Linters.
-# Requires TOX.
+## With TOX.
 
 lint: venv
 	$(TOX) -e lint
@@ -113,3 +113,14 @@ lint: venv
 
 isort: venv
 	$(TOX) -e isort-fix
+
+## Without TOX.
+
+lint: _make_venv_if_empty
+	flake8 . --exclude=venv,*_local.py
+
+isort: _make_venv_if_empty
+	isort -rc . --skip venv
+
+isort-check: _make_venv_if_empty
+	isort -rc -c . --skip venv
